@@ -1,4 +1,7 @@
-let s:defMatcher = '\%(\%(private\|protected\)\%(\[[^\]]*\]\)\?\s\+\|abstract\s\+\|override\s\+\)*\<def\>'
+let s:annotationMatcher = '@[A-Za-z._]\+\s\+'
+let s:modifierMatcher = s:annotationMatcher . '\|\%(private\|protected\)\%(\[[^\]]*\]\)\?\s\+\|abstract\s\+\|override\s\+\|final\s\+'
+let s:defMatcher = '\%(' . s:modifierMatcher . '\)*\<def\>'
+let s:valMatcher = '\%(' . s:modifierMatcher . '\|lazy\s\+\)*\<va[lr]\>'
 let s:funcNameMatcher = '\w\+'
 let s:typeSpecMatcher = '\%(\s*\[\_[^\]]*\]\)'
 let s:defArgMatcher = '\%((\_.\{-})\)'
@@ -162,7 +165,7 @@ function! scala#indent#NumberOfBraceGroups(line)
 endfunction
 
 function! scala#indent#MatchesIncompleteDefValr(line)
-  if a:line =~ '^\s*\%(' . s:defMatcher . '\|\<va[lr]\>\).*[=({]\s*$'
+  if a:line =~ '^\s*\%(' . s:defMatcher . '\|' . s:valMatcher . '\).*[=({]\s*$'
     return 1
   else
     return 0
@@ -412,7 +415,7 @@ function! GetScalaIndent()
   " If 'val', 'var', 'def' end with =, this is a one-line block
   if (prevline =~ '^\s*\<\%(\%(}\?\s*else\s\+\)\?if\|for\|while\)\>.*[)=]\s*$' && scala#indent#NumberOfBraceGroups(prevline) <= 1)
         \ || prevline =~ '^\s*' . s:defMatcher . '.*=\s*$'
-        \ || prevline =~ '^\s*\<va[lr]\>.*[=]\s*$'
+        \ || prevline =~ '^\s*' . s:valMatcher . '.*[=]\s*$'
         \ || prevline =~ '^\s*\%(}\s*\)\?\<else\>\s*$'
         \ || prevline =~ '=\s*$'
     call scala#indent#ConditionalConfirm("4")
