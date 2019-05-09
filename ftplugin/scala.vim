@@ -33,8 +33,8 @@ let b:undo_ftplugin .= 'setlocal comments< commentstring< | '
 setlocal shiftwidth=2 softtabstop=2 expandtab
 let b:undo_ftplugin .= 'setlocal shiftwidth< softtabstop< expandtab< | '
 
-setlocal include='^\s*import'
-setlocal includeexpr='substitute(v:fname,"\\.","/","g")'
+setlocal include=^\\s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
 let b:undo_ftplugin .= 'setlocal include< includeexpr< | '
 
 setlocal path+=src/main/scala,src/test/scala
