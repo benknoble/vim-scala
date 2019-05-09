@@ -60,14 +60,14 @@ hi def link scalatestShouldDSLB PreProc
 syn match scalaSymbol /'[_A-Za-z0-9$]\+/
 hi def link scalaSymbol Number
 
-syn match scalaChar /'.'/
-syn match scalaChar /'\\[\\"'ntbrf]'/ contains=scalaEscapedChar
-syn match scalaChar /'\\u[A-Fa-f0-9]\{4}'/ contains=scalaUnicodeChar
-syn match scalaEscapedChar /\\[\\"'ntbrf]/
-syn match scalaUnicodeChar /\\u[A-Fa-f0-9]\{4}/
-hi def link scalaChar Character
-hi def link scalaEscapedChar Function
-hi def link scalaUnicodeChar Special
+syn match scalaCharacter /'.'/
+syn match scalaCharacter /'\\[\\"'ntbrf]'/ contains=scalaEscapedCharacter
+syn match scalaCharacter /'\\u[A-Fa-f0-9]\{4}'/ contains=scalaUnicodeCharacter
+syn match scalaEscapedCharacter /\\[\\"'ntbrf]/
+syn match scalaUnicodeCharacter /\\u[A-Fa-f0-9]\{4}/
+hi def link scalaCharacter Characteracter
+hi def link scalaEscapedCharacter Function
+hi def link scalaUnicodeCharacter Special
 
 syn match scalaOperator "||"
 syn match scalaOperator "&&"
@@ -139,12 +139,12 @@ syn keyword scalaExternal package import
 hi def link scalaExternal Include
 
 syn match scalaStringEmbeddedQuote /\\"/ contained
-syn region scalaString start=/"/ end=/"/ contains=scalaStringEmbeddedQuote,scalaEscapedChar,scalaUnicodeChar
+syn region scalaString start=/"/ end=/"/ contains=scalaStringEmbeddedQuote,scalaEscapedCharacter,scalaUnicodeCharacter
 hi def link scalaString String
 hi def link scalaStringEmbeddedQuote String
 
-syn region scalaIString matchgroup=scalaInterpolationBrackets start=/\<[a-zA-Z][a-zA-Z0-9_]*"/ skip=/\\"/ end=/"/ contains=scalaInterpolation,scalaInterpolationB,scalaEscapedChar,scalaUnicodeChar
-syn region scalaTripleIString matchgroup=scalaInterpolationBrackets start=/\<[a-zA-Z][a-zA-Z0-9_]*"""/ end=/"""\%([^"]\|$\)/ contains=scalaInterpolation,scalaInterpolationB,scalaEscapedChar,scalaUnicodeChar
+syn region scalaIString matchgroup=scalaInterpolationBrackets start=/\<[a-zA-Z][a-zA-Z0-9_]*"/ skip=/\\"/ end=/"/ contains=scalaInterpolation,scalaInterpolationB,scalaEscapedCharacter,scalaUnicodeCharacter
+syn region scalaTripleIString matchgroup=scalaInterpolationBrackets start=/\<[a-zA-Z][a-zA-Z0-9_]*"""/ end=/"""\%([^"]\|$\)/ contains=scalaInterpolation,scalaInterpolationB,scalaEscapedCharacter,scalaUnicodeCharacter
 hi def link scalaIString String
 hi def link scalaTripleIString String
 
@@ -153,15 +153,15 @@ exe 'syn region scalaInterpolationB matchgroup=scalaInterpolationBoundary start=
 hi def link scalaInterpolation Function
 hi def link scalaInterpolationB Normal
 
-syn region scalaFString matchgroup=scalaInterpolationBrackets start=/f"/ skip=/\\"/ end=/"/ contains=scalaFInterpolation,scalaFInterpolationB,scalaEscapedChar,scalaUnicodeChar
+syn region scalaFString matchgroup=scalaInterpolationBrackets start=/f"/ skip=/\\"/ end=/"/ contains=scalaFInterpolation,scalaFInterpolationB,scalaEscapedCharacter,scalaUnicodeCharacter
 syn match scalaFInterpolation /\$[a-zA-Z0-9_$]\+\(%[-A-Za-z0-9\.]\+\)\?/ contained
 exe 'syn region scalaFInterpolationB matchgroup=scalaInterpolationBoundary start=/${/ end=/}\(%[-A-Za-z0-9\.]\+\)\?/ contained contains=' . s:ContainedGroup()
 hi def link scalaFString String
 hi def link scalaFInterpolation Function
 hi def link scalaFInterpolationB Normal
 
-syn region scalaTripleString start=/"""/ end=/"""\%([^"]\|$\)/ contains=scalaEscapedChar,scalaUnicodeChar
-syn region scalaTripleFString matchgroup=scalaInterpolationBrackets start=/f"""/ end=/"""\%([^"]\|$\)/ contains=scalaFInterpolation,scalaFInterpolationB,scalaEscapedChar,scalaUnicodeChar
+syn region scalaTripleString start=/"""/ end=/"""\%([^"]\|$\)/ contains=scalaEscapedCharacter,scalaUnicodeCharacter
+syn region scalaTripleFString matchgroup=scalaInterpolationBrackets start=/f"""/ end=/"""\%([^"]\|$\)/ contains=scalaFInterpolation,scalaFInterpolationB,scalaEscapedCharacter,scalaUnicodeCharacter
 hi def link scalaTripleString String
 hi def link scalaTripleFString String
 
