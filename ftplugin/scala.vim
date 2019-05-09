@@ -66,4 +66,7 @@ nnoremap <script> <buffer> <silent> [[ :call <SID>NextSection(1)<cr>
 let b:undo_ftplugin .= "execute 'silent! nunmap <buffer> ]]' | "
 let b:undo_ftplugin .= "execute 'silent! nunmap <buffer> [[' | "
 
+command! -buffer SortScalaImports call scala#indent#SortScalaImports()
+let b:undo_ftplugin .= 'silent! delcommand SortScalaImports | '
+
 let b:undo_ftplugin = trim(b:undo_ftplugin, ' |')
