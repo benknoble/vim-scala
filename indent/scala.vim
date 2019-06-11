@@ -13,7 +13,7 @@ setlocal autoindent
 setlocal indentexpr=scala#indent#GetScalaIndent()
 setlocal indentkeys=0{,0},0),!^F,<>>,o,O,e,=case,<CR>
 
-let b:undo_indent = get(b: 'undo_indent', '')
+let b:undo_indent = get(b:, 'undo_indent', '')
 
 if ! empty(b:undo_indent)
   let b:undo_indent .= ' | '
