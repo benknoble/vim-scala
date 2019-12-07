@@ -346,7 +346,7 @@ function! scala#indent#LineCompletesBrackets(openBracket, closedBracket)
   endif
 endfunction
 
-function! GetScalaIndent()
+function! scala#indent#GetScalaIndent()
   " Find a non-blank line above the current line.
   let prevlnum = prevnonblank(v:lnum - 1)
 
