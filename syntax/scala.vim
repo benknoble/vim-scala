@@ -118,7 +118,7 @@ hi def link scalaTypePostExtension Keyword
 
 syn match scalaTypeAnnotation /\%([_a-zA-Z0-9$\s]:\_s*\)\ze[_=(\.A-Za-z0-9$]\+/ skipwhite nextgroup=scalaTypeDeclaration contains=scalaRoundBrackets
 syn match scalaTypeAnnotation /)\_s*:\_s*\ze[_=(\.A-Za-z0-9$]\+/ skipwhite nextgroup=scalaTypeDeclaration
-hi def link scalaTypeAnnotation Normal
+hi clear scalaTypeAnnotation
 
 syn match scalaCaseFollowing /\<[_\.A-Za-z0-9$]\+\>/ contained contains=scalaCapitalWord
 syn match scalaCaseFollowing /`[^`]\+`/ contained contains=scalaCapitalWord
@@ -151,14 +151,14 @@ hi def link scalaTripleIString String
 syn match scalaInterpolation /\$[a-zA-Z0-9_$]\+/ contained
 exe 'syn region scalaInterpolationB matchgroup=scalaInterpolationBoundary start=/\${/ end=/}/ contained contains=' . s:ContainedGroup()
 hi def link scalaInterpolation Function
-hi def link scalaInterpolationB Normal
+hi clear scalaInterpolationB
 
 syn region scalaFString matchgroup=scalaInterpolationBrackets start=/f"/ skip=/\\"/ end=/"/ contains=scalaFInterpolation,scalaFInterpolationB,scalaEscapedCharacter,scalaUnicodeCharacter
 syn match scalaFInterpolation /\$[a-zA-Z0-9_$]\+\(%[-A-Za-z0-9\.]\+\)\?/ contained
 exe 'syn region scalaFInterpolationB matchgroup=scalaInterpolationBoundary start=/${/ end=/}\(%[-A-Za-z0-9\.]\+\)\?/ contained contains=' . s:ContainedGroup()
 hi def link scalaFString String
 hi def link scalaFInterpolation Function
-hi def link scalaFInterpolationB Normal
+hi clear scalaFInterpolationB
 
 syn region scalaTripleString start=/"""/ end=/"""\%([^"]\|$\)/ contains=scalaEscapedCharacter,scalaUnicodeCharacter
 syn region scalaTripleFString matchgroup=scalaInterpolationBrackets start=/f"""/ end=/"""\%([^"]\|$\)/ contains=scalaFInterpolation,scalaFInterpolationB,scalaEscapedCharacter,scalaUnicodeCharacter
